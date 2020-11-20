@@ -8,10 +8,9 @@ import {
     useLocation,
 } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import EditorContent from './features/editorContent/View/EditorContent';
 
 const SignIn = lazy(() => import('./features/signIn/View/SignIn'));
-const Dashboard = lazy(() => import('./Containers/Pages/Dashboard/Dashboard'))
+const Dashboard = lazy(() => import('./Container/Dashboard/Dashboard'))
 
 function PrivateRoute({ children, ...rest }) {
     const { isLogin } = useSelector(state => state.signIn);
@@ -39,6 +38,7 @@ export default function Routes() {
         <Suspense fallback={<div>loading</div>}>
             <Router>
                 <Switch>
+
                     <Route path="/signIn" component={SignIn} />
                     <PrivateRoute path="/dashboard">
                         <Dashboard />
